@@ -74,17 +74,18 @@ export default class LoginScreen extends Component {
                     </Text>
                     
                     <Form style={{ paddingTop: 60}}>
-                        <Item floatingLabel last>
-                            <Label>Email</Label>
+                        <Item rounded last style={{padding:10, backgroundColor: "#CFDCDD"}}>
                             <Input
+                                placeholder='Email'
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 onChangeText={this.setEmail}
                             />
                         </Item>
-                        <Item floatingLabel last>
-                            <Label>Password</Label>
+                        <Text></Text>
+                        <Item rounded last style={{padding:10, backgroundColor: "#CFDCDD"}}>
                             <Input
+                                placeholder='Password'
                                 secureTextEntry={true}
                                 autoCapitalize="none"
                                 autoCorrect={false}
@@ -92,7 +93,7 @@ export default class LoginScreen extends Component {
                             />
                         </Item>
                     </Form>
-                        <Button block last style={{marginTop: 50, backgroundColor: '#59C9A5'}} onPress={this.getLogin}>
+                        <Button rounded block last style={{marginTop: 50, backgroundColor: '#59C9A5'}} onPress={this.getLogin}>
                         <Text style={{fontFamily:"AirbnbCerealBlack", color: 'black', fontSize: 15}}>LOGIN</Text>
                         </Button>
                         <Text style={{fontFamily:"AirbnbCerealBook", textAlign: "center", marginTop: 30}} onPress={()=>{Actions.SignupScreen()}} >New User Registration</Text>

@@ -8,7 +8,7 @@ import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class BookScreen extends Component {
-    
+
     componentDidMount() {
         let fontName1 = 'AirbnbCerealBlack'
         let fontName2 = 'AirbnbCerealBold'
@@ -35,7 +35,7 @@ export default class BookScreen extends Component {
                         </Text>
                     </Body>
                     <Right>
-                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.HomeScreen()}}>
+                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.HomeScreen();}}>
                             BACK
                         </Text>
                     </Right>
@@ -48,13 +48,13 @@ export default class BookScreen extends Component {
                     <Text style={{textAlign: "center", height: 40, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
                         Choose Your Level of Study
                     </Text>
-                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen();}}>
+                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'PRIMARY'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>PRIMARY</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen();}}>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'Secondary'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>SECONDARY</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen();}}>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'University'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>UNIVERSITY</Text>
                     </Button>
                 </Content>

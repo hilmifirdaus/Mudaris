@@ -43,21 +43,21 @@ export default class BookSubjectScreen extends Component {
 
                 <Content padder>
                     <Text style={{textAlign: "center", height: 50, fontFamily: "AirbnbCerealBlack", fontSize: 40, marginTop: 20}}>
-                        Primary Level
+                        {this.props.level}
                     </Text>
                     <Text style={{textAlign: "center", height: 40, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
                         Choose Your Preferred Subject
                     </Text>
-                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen();}}>
+                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen({subject: 'BAHASA MELAYU'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>BAHASA MELAYU</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen();}}>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen({subject: 'ENGLISH LANGUAGE'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>ENGLISH LANGUAGE</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen();}}>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen({subject: 'MATHEMATICS'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>MATHEMATICS</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen();}}>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookTutorScreen({subject: 'SCIENCE'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>SCIENCE</Text>
                     </Button>
                 </Content>

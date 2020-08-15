@@ -48,7 +48,7 @@ export default class BookScreen extends Component {
                     <Text style={{textAlign: "center", height: 40, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
                         Choose Your Level of Study
                     </Text>
-                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'PRIMARY'});}}>
+                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'Primary'});}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>PRIMARY</Text>
                     </Button>
                     <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.BookSubjectScreen({level:'Secondary'});}}>

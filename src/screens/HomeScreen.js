@@ -16,19 +16,19 @@ export default class HomeScreen extends Component {
             carouselItems: [
                 {
                     title: "Step 1",
-                    text: "put step 1"
+                    text: "Select your level of studies."
                 },
                 {
                     title: "Step 2",
-                    text: "put step 2"
+                    text: "Select the subject that you wished to learn."
                 },
                 {
                     title: "Step 3",
-                    text: "put step 3"
+                    text: "Chat or book your preferred tutor."
                 },
                 {
                     title: "Step 4",
-                    text: "put step 4"
+                    text: "Have fun learning!"
                 },
             ]
         }

@@ -43,7 +43,7 @@ export default class TutorProfileScreen extends Component {
 
                 <Content padder>
                     <Text style={{textAlign: "center", height: 50, fontFamily: "AirbnbCerealBlack", fontSize: 40, marginTop: 20}}>
-                        Tutor Profile
+                        {this.props.tutor}
                     </Text>
                     <Text style={{textAlign: "center", height: 40, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
                         Chat or Book this Tutor!

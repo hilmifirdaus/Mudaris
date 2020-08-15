@@ -35,7 +35,7 @@ export default class ChatScreen extends Component {
                         </Text>
                     </Body>
                     <Right>
-                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.BookSubjectScreen()}}>
+                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.TutorProfileScreen()}}>
                             BACK
                         </Text>
                     </Right>
@@ -50,7 +50,7 @@ export default class ChatScreen extends Component {
                     </Text>
 
                     <List>
-                        <ListItem onPress={()=>{Actions.ChatUIScreen();}}>
+                        <ListItem onPress={()=>{Actions.ChatUIScreen({user:'Hilmi Firdaus'});}}>
                             <Left>
                                 <Text>Hilmi Firdaus</Text>
                             </Left>
@@ -58,7 +58,7 @@ export default class ChatScreen extends Component {
                                 <Icon name="arrow-forward" />
                             </Right>
                         </ListItem>
-                        <ListItem onPress={()=>{Actions.ChatUIScreen();}}>
+                        <ListItem onPress={()=>{Actions.ChatUIScreen({user:'Hazirah Haris'});}}>
                             <Left>
                                 <Text>Hazirah Haris</Text>
                             </Left>
@@ -66,7 +66,7 @@ export default class ChatScreen extends Component {
                                 <Icon name="arrow-forward" />
                             </Right>
                         </ListItem>
-                        <ListItem onPress={()=>{Actions.ChatUIScreen();}}>
+                        <ListItem onPress={()=>{Actions.ChatUIScreen({user:'Yuseri Yunus'});}}>
                             <Left>
                                 <Text>Yuseri Yunus</Text>
                             </Left>
@@ -74,7 +74,7 @@ export default class ChatScreen extends Component {
                                 <Icon name="arrow-forward" />
                             </Right>
                         </ListItem>
-                        <ListItem onPress={()=>{Actions.ChatUIScreen();}}>
+                        <ListItem onPress={()=>{Actions.ChatUIScreen({user:'Wan Maisarah'});}}>
                             <Left>
                                 <Text>Wan Maisarah</Text>
                             </Left>

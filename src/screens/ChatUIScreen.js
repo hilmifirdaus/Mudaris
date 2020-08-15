@@ -1,15 +1,78 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-import { Container, Content, Footer, FooterTab, Button, Text, Form, Item, Label, Input, Left, Right, Body, Title, Header, Tabs, Tab, Picker, List, ListItem  } from 'native-base';
-import { Alert, View } from 'react-native';
+import { Container, Content, Footer, FooterTab, Button, Text, Form, Item, Label, Input, Left, Right, Body, Title, Header, Tabs, Tab, Picker, List, ListItem, View  } from 'native-base';
+import { Alert } from 'react-native';
 import GlobalFont from 'react-native-global-font';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import firebase from '../database/firebase.js';
+import { GiftedChat } from 'react-native-gifted-chat'; // 0.3.0
 
 export default class ChatUIScreen extends Component {
 
+    state = {
+        messages: []
+    };
+
+    get uid() {
+        return (firebase.auth().currentUser || {}).uid;
+    }
+
+    get ref() {
+        return firebase.database().ref('Messages');
+    }
+
+    parse = snapshot => {
+        const { timestamp: numberStamp, text, user } = snapshot.val();
+        const { key: id } = snapshot;
+        const { key: _id } = snapshot;
+        const createdAt = new Date();
+
+        const message = {
+            id,
+            _id,
+            text,
+            user,
+            createdAt,
+        };
+        return message;
+    };
+
+    refOn = callback => {
+        this.ref.limitToLast(20)
+        .on('child_added', snapshot => callback(this.parse(snapshot)));
+    }
+
+    send = messages => {
+        for (let i = 0; i < messages.length; i++) {
+          const { text, user } = messages[i];
+          const message = {
+            text,
+            user,
+          };
+          this.ref.push(message);
+        }
+    };
+
+    refOff() {
+        this.ref.off();
+    }
+
+    get user() {
+        return {
+            name: this.props.user,
+            id: this.uid,
+            _id: this.uid
+        };
+    }
+
     componentDidMount() {
+        this.refOn(message =>
+            this.setState(previousState => ({
+              messages: GiftedChat.append(previousState.messages, message)
+            }))
+        );
         let fontName1 = 'AirbnbCerealBlack'
         let fontName2 = 'AirbnbCerealBold'
         let fontName3 = 'AirbnbCerealBook'
@@ -22,7 +85,11 @@ export default class ChatUIScreen extends Component {
         GlobalFont.applyGlobal(fontName4)
         GlobalFont.applyGlobal(fontName5)
         GlobalFont.applyGlobal(fontName6)   //<------- Added font family golbally 
-     }
+    }
+
+    componentWillUnmount() {
+        this.refOff();
+    }
 
     render() {
         return (
@@ -31,51 +98,25 @@ export default class ChatUIScreen extends Component {
                 <Header style={{backgroundColor:'white', height: 80}}>
                     <Body style={{paddingLeft:20}}>
                         <Text style={{fontFamily: "AirbnbCerealBlack", fontSize: 25}}>
-                            Mudaris
+                            {this.props.user}
                         </Text>
                     </Body>
                     <Right>
-                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.BookSubjectScreen()}}>
+                        <Text style={{fontFamily: "AirbnbCerealLight", fontSize: 17}} onPress={()=>{Actions.ChatScreen()}}>
                             BACK
                         </Text>
                     </Right>
                 </Header>
 
-                <Content padder>
-                    <Text style={{textAlign: "center", height: 50, fontFamily: "AirbnbCerealBlack", fontSize: 40, marginTop: 20}}>
-                        Chat
-                    </Text>
-                    <Text style={{textAlign: "center", height: 100, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
-                        boleh tukar freely kat bahagian content ni ikut tutorial
-                    </Text>
-
-                    <Text style={{textAlign: "center", height: 40, fontWeight: "bold", marginTop: 20}}>
-                        too lazy to develop, can refer here https://blog.expo.io/how-to-build-a-chat-app-with-react-native-3ef8604ebb3c
-                    </Text>
-
+                <Content style={{flex: 1}} contentContainerStyle={{flex: 1}}>
+                    <GiftedChat
+                        messages={this.state.messages}
+                        onSend={this.send}
+                        user={this.user}
+                    />
                 </Content>
 
-                <Footer style={{height: 80}}>
-                    <FooterTab style={{backgroundColor:'white'}}>
-                        <Button vertical onPress={()=>{Actions.HomeScreen();}}>
-                            <Icon style={{color:'grey', paddingBottom:7}} name="home-outline" size={25}/>
-                            <Text style={{color:'grey', fontFamily: "AirbnbCerealMedium", fontSize: 15}}>Home</Text>
-                        </Button>
-                        <Button vertical onPress={()=>{Actions.ChatScreen();}}>
-                            <Icon style={{color:'#F0736A', paddingBottom:7}} name="chatbubbles-outline" size={25}/>
-                            <Text style={{color:'#F0736A', fontFamily: "AirbnbCerealMedium", fontSize: 15}}>Chat</Text>
-                        </Button>
-                        <Button vertical onPress={()=>{Actions.BookStatusScreen();}}>
-                            <Icon style={{color:'grey', paddingBottom:7}} name="notifications-outline" size={25}/>
-                            <Text style={{color:'grey', fontFamily: "AirbnbCerealMedium", fontSize: 15}}>Status</Text>
-                        </Button>
-                        <Button vertical onPress={()=>{Actions.ProfileScreen();}}>
-                            <Icon style={{color:'grey', paddingBottom:7}} name="person-outline" size={25}/>
-                            <Text style={{color:'grey', fontFamily: "AirbnbCerealMedium", fontSize: 15}}>Profile</Text>
-                        </Button>
-                    </FooterTab>
-                </Footer>
-
+                
             </Container>
         );
     }

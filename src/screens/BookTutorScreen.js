@@ -48,17 +48,17 @@ export default class BookTutorScreen extends Component {
                     <Text style={{textAlign: "center", height: 40, fontFamily: "AirbnbCerealBold", fontSize: 20, marginTop: 50}}>
                         Choose Your Preferred Tutor
                     </Text>
-                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen();}}>
-                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>TUTOR 1</Text>
+                    <Button block last style={{marginTop: 70, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen({tutor:'Hazirah Haris'});}}>
+                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>Hazirah Haris</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen();}}>
-                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>TUTOR 2</Text>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen({tutor: 'Wan Maisarah'});}}>
+                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>Wan Maisarah</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen();}}>
-                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>TUTOR 3</Text>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen({tutor:'Yuseri Yunus'});}}>
+                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>Yuseri Yunus</Text>
                     </Button>
-                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen();}}>
-                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>TUTOR 4</Text>
+                    <Button block last style={{marginTop: 10, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.TutorProfileScreen({tutor:'Hilmi Firdaus'});}}>
+                        <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>Hilmi Firdaus</Text>
                     </Button>
                 </Content>
 

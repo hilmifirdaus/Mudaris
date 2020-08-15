@@ -14,8 +14,7 @@ export default class EditProfileScreen extends Component {
         this.state={
            name: null,
            age: null,
-           bla: null,
-           blabla: null 
+           education: null, 
         }
     }
 
@@ -25,11 +24,16 @@ export default class EditProfileScreen extends Component {
     setAge = (value) =>{
         this.setState({age: value});
     }
-    setBla = (value) =>{
-        this.setState({bla: value});
+    setEducation = (value) =>{
+        this.setState({education: value});
     }
-    setBlaBla = (value) =>{
-        this.setState({blabla: value});
+
+    saveProfile = () => {
+        let name = this.state.name;
+        let age = this.state.age;
+        let education = this.state.education;
+
+        return Actions.ProfileScreen();
     }
 
     componentDidMount() {
@@ -68,9 +72,6 @@ export default class EditProfileScreen extends Component {
                     <Text style={{textAlign: "center", height: 50, fontFamily: "AirbnbCerealBlack", fontSize: 40, margin: 20}}>
                         Edit Profile
                     </Text>
-                    <Text style={{textAlign: "center", height: 100, fontFamily: "AirbnbCerealBold", fontSize: 20, margin: 50}}>
-                        ni pun boleh edit kat dalam content only
-                    </Text>
                     
                     <Form>
                         <Item fixedLabel last>
@@ -82,30 +83,12 @@ export default class EditProfileScreen extends Component {
                             <Input onChangeText={this.setAge} value={this.state.age} />
                         </Item>
                         <Item fixedLabel last>
-                            <Label style={{fontFamily: "AirbnbCerealMedium"}}>Bla</Label>
-                            <Input onChangeText={this.setBla} value={this.state.bla} />
-                        </Item>
-                        <Item fixedLabel picker last>
-                            <Label style={{fontFamily: "AirbnbCerealMedium"}}>Bla Bla</Label>
-                            <Picker 
-                            mode="dropdown" 
-                            style={{ width: undefined, fontFamily: "AirbnbCerealMedium" }}
-                            placeholder="Select Bla Bla"
-                            placeholderStyle={{ color: "#bfc6ea" }}
-                            placeholderIconColor="#007aff"
-                            selectedValue={this.state.blabla}
-                            onValueChange={this.setBlaBla}
-                            Title="TIME"
-                            >
-                                <Picker.Item label="Bla Bla1" value="8" />
-                                <Picker.Item label="Bla Bla2" value="10" />
-                                <Picker.Item label="Bla Bla3" value="2" />
-                                <Picker.Item label="Bla Bla4" value="4" />
-                            </Picker>
+                            <Label style={{fontFamily: "AirbnbCerealMedium"}}>Education</Label>
+                            <Input onChangeText={this.setEducation} value={this.state.education} />
                         </Item>
                     </Form>
 
-                    <Button block last style={{margin: 50, backgroundColor:'#59C9A5'}} onPress={()=>{Actions.ProfileScreen();}}>
+                    <Button block last style={{margin: 50, backgroundColor:'#59C9A5'}} onPress={()=>{this.saveProfile}}>
                         <Text style={{color:'black', fontFamily: "AirbnbCerealBlack", fontSize: 15}}>Edit</Text>
                     </Button>
 

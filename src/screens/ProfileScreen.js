@@ -63,12 +63,7 @@ export default class ProfileScreen extends Component {
                         </ListItem>
                         <ListItem>
                             <Left>
-                                <Text>Bla bla</Text>
-                            </Left>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>bla bla</Text>
+                                <Text>Education</Text>
                             </Left>
                         </ListItem>
                     </List>
